@@ -1,11 +1,10 @@
-package com.photoarchive.com.photoarchive.models;
+package com.photoarchive.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Getter
