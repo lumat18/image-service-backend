@@ -1,10 +1,27 @@
-package com.photoarchive.models;
+package com.photoarchive.com.photoarchive.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
+import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
+
+@Getter
+@Setter
+@Entity(name = "tags")
 public class Tag {
+
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long tag_id;
+    private String name;
+
+    @ManyToMany(mappedBy = "tags")
+    @JsonIgnore
+    private Set<Photo> photos;
+
+    public Tag() {
+    }
 }
