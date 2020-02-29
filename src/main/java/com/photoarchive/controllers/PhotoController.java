@@ -23,7 +23,7 @@ public class PhotoController {
         this.stringValidatorService = stringValidatorService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Photo> getAllPhotos(){
         return photoRepository.findAll();
     }
