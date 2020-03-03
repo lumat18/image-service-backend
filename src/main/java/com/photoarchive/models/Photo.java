@@ -17,7 +17,7 @@ public class Photo {
     private Long photo_id;
     @Column(nullable = false)
     private String href;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "photos_tags",
             joinColumns = @JoinColumn(name = "photo_id"),

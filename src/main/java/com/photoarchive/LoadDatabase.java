@@ -24,8 +24,8 @@ public class LoadDatabase {
             tag1.setTag_name("java");
             final Photo photo = new Photo("https://devhumor.com/content/uploads/images/May2018/sun_java.jpg", Set.of(tag, tag1));
 
-            log.info("Preloading... " + tagRepository.save(tag));
-            log.info("Preloading... " + tagRepository.save(tag1));
+//            log.info("Preloading... " + tagRepository.save(tag));
+//            log.info("Preloading... " + tagRepository.save(tag1));
             log.info("Preloading... " + photoRepository.save(photo));
         };
     }

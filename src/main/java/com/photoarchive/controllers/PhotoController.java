@@ -3,10 +3,7 @@ package com.photoarchive.controllers;
 import com.photoarchive.models.Photo;
 import com.photoarchive.repositories.PhotoRepository;
 import com.photoarchive.services.StringValidatorService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,7 +29,13 @@ public class PhotoController {
     public List<Photo> getPhotosByTag(@RequestParam(name = "tag") String tag){
         final String tagInput = stringValidatorService.handleTagInput(tag);
         return photoRepository.findAll().stream()
-                .filter(photo -> photo.getTags().contains(tagInput))
+                .filter(photo -> photo.getTags().stream().anyMatch(photoTag -> photoTag.getTag_name().equals(tagInput)))
                 .collect(Collectors.toList());
+    }
+
+    @PostMapping
+    public void addPhoto(@RequestBody Photo photo){
+        photo.getTags().forEach(tag -> tag.setTag_name(stringValidatorService.handleTagInput(tag.getTag_name())));
+        photoRepository.save(photo);
     }
 }
