@@ -5,7 +5,9 @@ import com.photoarchive.repositories.PhotoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,9 +32,9 @@ public class PhotoSearchService {
                 .collect(Collectors.toList());
     }
 
-    public List<Photo> getPhotosByTags(String tagInput) {
+    public Set<Photo> getPhotosByTags(String tagInput) {
         final List<String> tagNames = stringValidatorService.stringInputToTagNames(tagInput);
-        final List<Photo> searchResult = new ArrayList<>();
+        final Set<Photo> searchResult = new HashSet<>();
 
         tagNames.forEach(tagName -> {
             final List<Photo> photoList = getPhotosByTag(tagName);

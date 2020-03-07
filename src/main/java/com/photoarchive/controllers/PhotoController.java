@@ -6,6 +6,7 @@ import com.photoarchive.models.Photo;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/photos")
@@ -27,7 +28,7 @@ public class PhotoController {
     }
 
     @GetMapping
-    public List<Photo> getPhotosByTags(@RequestParam(name = "tags") String tags){
+    public Set<Photo> getPhotosByTags(@RequestParam(name = "tags") String tags){
         return photoSearchService.getPhotosByTags(tags);
     }
 
