@@ -27,8 +27,8 @@ public class PhotoController {
     }
 
     @GetMapping
-    public List<Photo> getPhotosByTag(@RequestParam(name = "tag") String tag){
-        return photoSearchService.getPhotosByTag(tag);
+    public List<Photo> getPhotosByTags(@RequestParam(name = "tags") String tags){
+        return photoSearchService.getPhotosByTags(tags);
     }
 
     @PostMapping
